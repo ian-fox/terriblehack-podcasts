@@ -12,15 +12,6 @@ with sr.AudioFile(input_file) as source:
 
 text = ""
 
-# recognize speech using Sphinx
-# try:
-#     text = r.recognize_sphinx(audio)
-# except sr.UnknownValueError:
-#     print("Error: sphinx could not understand audio")
-#     sys.exit(1)
-# except sr.RequestError as e:
-#     print("Sphinx error; {0}".format(e))
-#     sys.exit(1)
 
 # recognize speech using Google Speech Recognition
 try:
