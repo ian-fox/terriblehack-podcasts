@@ -13,14 +13,25 @@ with sr.AudioFile(input_file) as source:
 text = ""
 
 # recognize speech using Sphinx
+# try:
+#     text = r.recognize_sphinx(audio)
+# except sr.UnknownValueError:
+#     print("Error: sphinx could not understand audio")
+#     sys.exit(1)
+# except sr.RequestError as e:
+#     print("Sphinx error; {0}".format(e))
+#     sys.exit(1)
+
+# recognize speech using Google Speech Recognition
 try:
-    text = r.recognize_sphinx(audio)
+    # for testing purposes, we're just using the default API key
+    # to use another API key, use `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
+    # instead of `r.recognize_google(audio)`
+    text = r.recognize_google(audio)
 except sr.UnknownValueError:
-    print("Error: sphinx could not understand audio")
-    sys.exit(1)
+    print("Error: Google Speech Recognition could not understand audio")
 except sr.RequestError as e:
-    print("Sphinx error; {0}".format(e))
-    sys.exit(1)
+    print("Error: Could not request results from Google Speech Recognition service; {0}".format(e))
 
 # Print transcript
 print(text)
